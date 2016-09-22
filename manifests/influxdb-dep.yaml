@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1 
+kind: Deployment 
+metadata:
+  labels:
+    run: influxdb
+  name: influxdb
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: influxdb
+    spec:
+      containers:
+      - name: influxdb
+        image: influxdb:1.0-alpine
+        ports:
+        - containerPort: 8083
+        - containerPort: 8086
+        volumeMounts: 
+        - name: datastore
+          mountPath: /var/lib/influxdb
+      volumes:
+        - name: datastore 
+          awsElasticBlockStore:
+            volumeID: vol-a3910976 
+            fsType: ext4
