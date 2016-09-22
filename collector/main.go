@@ -14,6 +14,8 @@ import (
 var ic influx.Client
 
 func main() {
+	log.Println("INFLUX_HOST", os.Getenv("INFLUX_HOST"))
+	log.Println("AMPQ_HOST", os.Getenv("AMPQ_HOST"))
 
 	var err error
 	config := influx.HTTPConfig{

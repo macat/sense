@@ -7,4 +7,3 @@ WORKDIR /go/src/github.com/macat/sense/collector
 ADD . /go/src/github.com/macat/sense/collector
 
 CMD go run main.go
-
