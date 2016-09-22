@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: chronograf
+  name: chronograf
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: chronograf
+    spec:
+      containers:
+      - name: chronograf
+        image: chronograf:1.0.0-rc1
+        env:
+        - name: CHRONOGRAF_BIND
+          value: 0.0.0.0:10000
+        - name: INFLUXDB_PROTO
+          value: http
+        - name: INFLUXDB_HOST
+          value: influxdb
+        - name: INFLUXDB_PORT
+          value: "8086" 
+        ports:
+        - containerPort: 10000
+        
