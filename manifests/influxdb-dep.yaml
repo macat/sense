@@ -17,6 +17,7 @@ spec:
         ports:
         - containerPort: 8083
         - containerPort: 8086
+        - containerPort: 8089
         volumeMounts: 
         - name: datastore
           mountPath: /var/lib/influxdb

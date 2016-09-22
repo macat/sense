@@ -14,6 +14,10 @@ spec:
     port: 8086
     protocol: TCP
     targetPort: 8086
+  - name: port-3
+    port: 8089
+    protocol: UDP
+    targetPort: 8089
   selector:
     run: influxdb
   type: ClusterIP
