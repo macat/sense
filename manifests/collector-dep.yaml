@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment 
+metadata:
+  name: collector
+spec:
+  replicas: 1 
+  template:
+    metadata:
+      labels:
+        app: collector 
+    spec:
+      containers:
+      - name: collector 
+        image: macat/sense-collector:v1.3
+        env:
+        - name: AMPQ_HOST 
+          value: amqp://sense-rabbitmq
+        - name: INFLUX_HOST
+          value: http://influxdb
