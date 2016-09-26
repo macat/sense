@@ -20,8 +20,8 @@ func main() {
 	var err error
 	config := influx.HTTPConfig{
 		Addr:     os.Getenv("INFLUX_HOST"),
-		Username: "admin",
-		Password: "admin",
+		Username: os.Getenv("INFLUX_USER"),
+		Password: os.Getenv("INFLUX_PASS"),
 	}
 	ic, err = influx.NewHTTPClient(config)
 	if err != nil {

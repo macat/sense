@@ -1,5 +1,5 @@
-apiVersion: extensions/v1beta1 
-kind: Deployment 
+apiVersion: v1
+kind: ReplicationController
 metadata:
   labels:
     run: influxdb
@@ -18,11 +18,10 @@ spec:
         - containerPort: 8083
         - containerPort: 8086
         - containerPort: 8089
-        volumeMounts: 
-        - name: datastore
-          mountPath: /var/lib/influxdb
-      volumes:
-        - name: datastore 
-          awsElasticBlockStore:
-            volumeID: vol-a3910976 
-            fsType: ext4
+#        volumeMounts:
+#        - name: datastore
+#          mountPath: /var/lib/influxdb
+#      volumes:
+#        - name: datastore
+#          persistentVolumeClaim:
+#            claimName: influxdbclaim

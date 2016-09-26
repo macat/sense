@@ -1,0 +1,10 @@
+location = "nyc"
+floor = "15"
+room = "2"
+device_id = "2"
+mqtt_ip = "mqtthost"
+mqtt_port = 1883
+mqtt_user = "test"
+mqtt_password = "test"
+wifi_ssid = "Network"
+wifi_password = "____"
