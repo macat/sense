@@ -1,2 +1,3 @@
 collector/collector
 sensor/config.lua
+manifests/sensecrets.yml
