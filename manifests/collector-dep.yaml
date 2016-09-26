@@ -14,10 +14,16 @@ spec:
         image: macat/sense-collector:v4
         env:
         - name: AMPQ_HOST
-          value: amqp://sense:9aiyMXeFBBf98khj^B7ewG@sense-rabbitmq-mgmt
+          valueFrom:
+            secretKeyRef:
+              name: sensecrets
+              key: ampqhost
         - name: INFLUX_HOST
           value: http://influxdb:8086
         - name: INFLUX_USER
-          value: admin
+          value: sensewrite
         - name: INFLUX_PASS
-          value: admin
+          valueFrom:
+            secretKeyRef:
+              name: sensecrets
+              key: sensewritepass

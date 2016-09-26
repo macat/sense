@@ -3,10 +3,10 @@ kind: Service
 metadata:
   labels:
     app: influxdb
-  name: influxdb
+  name: influxweb
 spec:
   ports:
-  - name: admin
+  - name: web
     port: 8083
     protocol: TCP
     targetPort: 8083
@@ -15,5 +15,5 @@ spec:
     protocol: TCP
     targetPort: 8086
   selector:
-    app: influxdb
+    app: influxweb
   type: LoadBalancer

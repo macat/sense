@@ -2,14 +2,14 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   labels:
-    run: influxdb
+    app: influxdb
   name: influxdb
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        run: influxdb
+        app: influxdb
     spec:
       containers:
       - name: influxdb
@@ -18,10 +18,14 @@ spec:
         - containerPort: 8083
         - containerPort: 8086
         - containerPort: 8089
-#        volumeMounts:
-#        - name: datastore
-#          mountPath: /var/lib/influxdb
-#      volumes:
-#        - name: datastore
-#          persistentVolumeClaim:
-#            claimName: influxdbclaim
+          protocol: "UDP"
+        env:
+        - name: INFLUXDB_HTTP_AUTH_ENABLED
+          value: "true"
+        volumeMounts:
+        - name: datastore
+          mountPath: /var/lib/influxdb
+      volumes:
+        - name: datastore
+          persistentVolumeClaim:
+            claimName: influxdbclaim

@@ -15,7 +15,7 @@ print("hello!")
 gpio.mode(6, gpio.INPUT)
 
 
-tmr.alarm(0, 1000, tmr.ALARM_AUTO, function()
+tmr.alarm(0, 500, tmr.ALARM_AUTO, function()
   print("WIFI"..wifi.sta.status())
    if wifi.sta.status() == 5 then
       wifi_ok = 1
@@ -35,7 +35,7 @@ end)
 
 
 -- Connect to mqtt
-tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()
+tmr.alarm(1, 2000, tmr.ALARM_AUTO, function()
   if wifi_ok == 1 then
     mqtt_connect()
   end
